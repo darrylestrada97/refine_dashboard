@@ -20,6 +20,7 @@ import { Login } from "pages/login";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
+import { AccountCircleOutlined, ChatBubbleOutline, PeopleAltOutlined, StarOutline, VillaOutlined } from "@mui/icons-material";
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
   const token = localStorage.getItem("token");
@@ -98,12 +99,29 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: "posts",
+              name: "property",
               list: MuiInferencer,
-              edit: MuiInferencer,
-              show: MuiInferencer,
-              create: MuiInferencer,
-              canDelete: true,
+              icon: <VillaOutlined />
+            },
+            {
+              name: "Agent",
+              list: MuiInferencer,
+              icon: <PeopleAltOutlined />
+            },
+            {
+              name: "Review",
+              list: MuiInferencer,
+              icon: <StarOutline />
+            },
+            {
+              name: "Mesage",
+              list: MuiInferencer,
+              icon: <ChatBubbleOutline />
+            }, {
+              name: "My-Profile",
+              options: { label: "My Profile" },
+              list: MuiInferencer,
+              icon: <AccountCircleOutlined />
             },
           ]}
           Title={Title}
